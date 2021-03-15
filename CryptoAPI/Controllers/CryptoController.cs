@@ -4,18 +4,24 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Logic;
 
 namespace CryptoAPI.Controllers
 {
+    [Route("crypto")]
     public class CryptoController : Controller
     {
-        // GET: CryptoController
-        public ActionResult Index()
+        [HttpGet("get")]
+        public List<Currency> Get()
         {
-            return View();
+            List<Currency> cryptos = new List<Currency>();
+            cryptos.Add(new Currency { id = 1, Name = "Bitcoin", Price = 5000 });
+            cryptos.Add(new Currency { id = 2, Name = "Ethereum", Price = 1000 });
+
+            return cryptos;
         }
 
-        // GET: CryptoController/Details/5
+        // GET: crypto/get/id
         public ActionResult Details(int id)
         {
             return View();
