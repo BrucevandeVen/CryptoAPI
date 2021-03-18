@@ -12,7 +12,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "crypto/get",
+      "launchUrl": "crypto",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -20,7 +20,7 @@
     "CryptoAPI": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "crypto/get",
+      "launchUrl": "crypto",
       "applicationUrl": "https://localhost:5001;http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

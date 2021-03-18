@@ -4,27 +4,37 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Logic;
 
 namespace CryptoAPI.Controllers
 {
-    [Route("crypto")]
+    [ApiController]
+    [Route("[Controller]")]
     public class CryptoController : Controller
     {
-        [HttpGet("get")]
+        private List<Currency> cryptos = new List<Currency>
+        {
+            new Currency { id = 1, Name = "Bitcoin", Price = 55000},
+            new Currency { id = 2, Name = "Ethereum", Price = 1500}
+        };
+
+
+        [HttpGet]
         public List<Currency> Get()
         {
-            List<Currency> cryptos = new List<Currency>();
-            cryptos.Add(new Currency { id = 1, Name = "Bitcoin", Price = 5000 });
-            cryptos.Add(new Currency { id = 2, Name = "Ethereum", Price = 1000 });
-
             return cryptos;
         }
 
-        // GET: crypto/get/id
-        public ActionResult Details(int id)
+        [HttpGet("{id}")]
+        public ActionResult<Currency> Details(int id)
         {
-            return View();
+            Currency currency = cryptos.FirstOrDefault(crypto => crypto.id == id);
+
+            if (currency == null)
+            {
+                return NotFound(new { Message = "Cryptocurrency has not been found" });
+            }
+
+            return currency;
         }
 
         // GET: CryptoController/Create
