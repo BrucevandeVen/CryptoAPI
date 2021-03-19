@@ -24,7 +24,7 @@ namespace CryptoAPI.Controllers
         public IEnumerable<CryptoDTO> Get()
         {
             IEnumerable<CryptoDTO> cryptos = _dataAccess.GetAll().Select(crypto => crypto.ToDTO());
-
+            //dockertest
             return cryptos;
         }
 
