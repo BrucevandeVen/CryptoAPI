@@ -1,4 +1,5 @@
-﻿using CryptoAPI.Models;
+﻿using CryptoAPI.DTOs;
+using CryptoAPI.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -20,17 +21,17 @@ namespace CryptoAPI.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Crypto> Get()
+        public IEnumerable<CryptoDTO> Get()
         {
-            IEnumerable<Crypto> cryptos = _dataAccess.GetAll();
+            IEnumerable<CryptoDTO> cryptos = _dataAccess.GetAll().Select(crypto => crypto.ToDTO());
 
             return cryptos;
         }
 
         [HttpGet("{id}")]
-        public ActionResult<Crypto> Details(int id)
+        public ActionResult<CryptoDTO> Details(int id)
         {
-            Crypto crypto = _dataAccess.GetById(id);
+            CryptoDTO crypto = _dataAccess.GetById(id).ToDTO();
 
             if (crypto == null)
             {
