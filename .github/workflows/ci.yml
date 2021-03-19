@@ -3,8 +3,6 @@ name: .NET
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
 jobs:
   build:
@@ -18,8 +16,8 @@ jobs:
       with:
         dotnet-version: 5.0.x
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore ./CryptoAPI/CryptoAPI.sln
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build --no-restore ./CryptoAPI/CryptoAPI.sln
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test --no-build --verbosity normal ./CryptoAPI/CryptoAPI.sln
