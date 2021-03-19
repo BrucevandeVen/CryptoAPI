@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using CryptoAPI.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,30 +12,32 @@ namespace CryptoAPI.Controllers
     [Route("[Controller]")]
     public class CryptoController : Controller
     {
-        private List<Currency> cryptos = new List<Currency>
-        {
-            new Currency { id = 1, Name = "Bitcoin", Price = 55000},
-            new Currency { id = 2, Name = "Ethereum", Price = 1500}
-        };
+        private readonly IDataAccess _dataAccess;
 
+        public CryptoController(IDataAccess dataAccess)
+        {
+            _dataAccess = dataAccess;
+        }
 
         [HttpGet]
-        public List<Currency> Get()
+        public IEnumerable<Crypto> Get()
         {
+            IEnumerable<Crypto> cryptos = _dataAccess.GetAll();
+
             return cryptos;
         }
 
         [HttpGet("{id}")]
-        public ActionResult<Currency> Details(int id)
+        public ActionResult<Crypto> Details(int id)
         {
-            Currency currency = cryptos.FirstOrDefault(crypto => crypto.id == id);
+            Crypto crypto = _dataAccess.GetById(id);
 
-            if (currency == null)
+            if (crypto == null)
             {
                 return NotFound(new { Message = "Cryptocurrency has not been found" });
             }
 
-            return currency;
+            return Ok(crypto);
         }
 
         // GET: CryptoController/Create
