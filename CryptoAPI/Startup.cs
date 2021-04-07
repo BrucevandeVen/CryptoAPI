@@ -27,6 +27,12 @@ namespace CryptoAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // CORS configuration
+            services.AddCors(
+                options => options.AddDefaultPolicy(
+                    builder => builder.AllowAnyOrigin())
+            );
+
             // Dependency injection service(s)
             services.AddSingleton<IDataAccess, DataAccess>();
 
@@ -44,6 +50,8 @@ namespace CryptoAPI
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors();
 
             app.UseAuthorization();
 
