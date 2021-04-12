@@ -1,4 +1,5 @@
 ﻿using CryptoAPI.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,21 +9,19 @@ namespace CryptoAPI
 {
     public class DataAccess : IDataAccess
     {
-        public IEnumerable<Crypto> GetAll()
+        public async Task <IEnumerable<Crypto>> GetAll()
         {
             using (var context = new CryptoMonitorContext())
             {
-                return context.Crypto.ToList();
+                return await context.Crypto.ToListAsync();
             }
         }
 
-        public Crypto GetById(int id)
+        public async Task <Crypto> GetById(int id)
         {
             using (var context = new CryptoMonitorContext())
             {
-                Crypto crypto = context.Crypto.FirstOrDefault(crypto => crypto.Id == id);
-
-                return crypto;
+                return await context.Crypto.FirstOrDefaultAsync(crypto => crypto.Id == id);
             }
         }
     }

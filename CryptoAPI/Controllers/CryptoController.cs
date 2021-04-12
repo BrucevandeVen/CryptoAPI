@@ -21,24 +21,27 @@ namespace CryptoAPI.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<CryptoDTO> Get()
+        public async Task <IEnumerable<CryptoDTO>> Get()
         {
-            IEnumerable<CryptoDTO> cryptos = _dataAccess.GetAll().Select(crypto => crypto.ToDTO());
+            IEnumerable<Crypto> cryptos = await _dataAccess.GetAll();
+            IEnumerable<CryptoDTO> cryptoDTOs = cryptos.ToList().Select(crypto => crypto.ToDTO());
    
-            return cryptos;
+            return cryptoDTOs;
         }
 
         [HttpGet("{id}")]
-        public ActionResult<CryptoDTO> Details(int id)
+        public async Task <ActionResult<CryptoDTO>> Details(int id)
         {
-            CryptoDTO crypto = _dataAccess.GetById(id).ToDTO();
+            Crypto crypto = await _dataAccess.GetById(id);
 
             if (crypto == null)
             {
                 return NotFound(new { Message = "Cryptocurrency has not been found" });
             }
 
-            return Ok(crypto);
+            CryptoDTO cryptoDTO = crypto.ToDTO();
+
+            return Ok(cryptoDTO);
         }
 
         // GET: CryptoController/Create
