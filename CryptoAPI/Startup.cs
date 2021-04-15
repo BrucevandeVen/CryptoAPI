@@ -35,6 +35,7 @@ namespace CryptoAPI
 
             // Dependency injection service(s)
             services.AddSingleton<IDataAccess, DataAccess>();
+            services.AddSingleton<ICryptoDataUpdater, CryptoDataUpdater>();
 
             services.AddControllers();
         }
