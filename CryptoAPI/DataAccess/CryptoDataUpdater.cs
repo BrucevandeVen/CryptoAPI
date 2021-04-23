@@ -18,7 +18,7 @@ namespace CryptoAPI
             using(var context = new CryptoMonitorContext())
             {
                 List<Crypto> cryptos = context.Crypto.ToList();
-                Crypto[] newCryptos = makeAPICall().ToArray();
+                Crypto[] newCryptos = MakeAPICall().ToArray();
 
                 int i = 0;
 
@@ -36,7 +36,7 @@ namespace CryptoAPI
             }
         }
 
-        private List<Crypto> makeAPICall()
+        private List<Crypto> MakeAPICall()
         {
             var URL = new UriBuilder("https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest");
 
