@@ -13,6 +13,8 @@ namespace CryptoAPI
     {
         public static void Main(string[] args)
         {
+            Updater();
+
             CreateHostBuilder(args).Build().Run();
         }
 
@@ -22,5 +24,28 @@ namespace CryptoAPI
                 {
                     webBuilder.UseStartup<Startup>();
                 });
+
+        public static void Updater()
+        {
+            CryptoDataUpdater cryptoDataUpdater = new CryptoDataUpdater();
+            CryptoUpdater _cryptoUpdater = new CryptoUpdater(cryptoDataUpdater);
+
+            var startTimeSpan = TimeSpan.Zero;
+            var periodTimeSpan = TimeSpan.FromMinutes(2);
+
+            var timer = new System.Threading.Timer((e) =>
+            {
+                try
+                {
+                    _cryptoUpdater.Update();
+                    Console.WriteLine("Updated successfully");
+                }
+                catch
+                {
+                    Console.WriteLine("Update failed");
+                }
+
+            }, null, startTimeSpan, periodTimeSpan);
+        }
     }
 }
