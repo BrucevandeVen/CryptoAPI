@@ -31,7 +31,7 @@ namespace CryptoAPI
             CryptoUpdater _cryptoUpdater = new CryptoUpdater(cryptoDataUpdater);
 
             var startTimeSpan = TimeSpan.Zero;
-            var periodTimeSpan = TimeSpan.FromMinutes(2);
+            var periodTimeSpan = TimeSpan.FromMinutes(5);
 
             var timer = new System.Threading.Timer((e) =>
             {
