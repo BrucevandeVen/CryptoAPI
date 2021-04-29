@@ -20,7 +20,7 @@ namespace CryptoAPI.Controllers
         {
             _dataAccess = dataAccess;
             _cryptoUpdater = cryptoUpdater;
-            //test
+            //test2
         }
 
         [HttpGet]
