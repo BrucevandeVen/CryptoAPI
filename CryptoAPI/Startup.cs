@@ -30,7 +30,7 @@ namespace CryptoAPI
             var server = Configuration["DBServer"] ?? "ms-sql-server";
             var port = Configuration["DBPort"] ?? "1433";
             var user = Configuration["DBUser"] ?? "SA";
-            var password = Configuration["DBPassword"] ?? "Pa55w0rd2021";
+            var password = Configuration["DBPassword"] ?? "Brucekeeper13";
             var database = Configuration["Database"] ?? "Cryptos";
 
             services.AddDbContext<CryptoMonitorContext>(options =>
@@ -52,6 +52,8 @@ namespace CryptoAPI
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            PrepDB.PrepPopulation(app);
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -69,8 +71,6 @@ namespace CryptoAPI
             {
                 endpoints.MapControllers();
             });
-
-            PrepDB.PrepPopulation(app);
         }
     }
 }

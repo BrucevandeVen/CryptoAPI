@@ -1,16 +1,22 @@
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build-env
+#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
+
+FROM mcr.microsoft.com/dotnet/aspnet:3.1 AS base
 WORKDIR /app
+EXPOSE 80
+EXPOSE 443
 
+FROM mcr.microsoft.com/dotnet/sdk:3.1 AS build
+WORKDIR /src
+COPY ["CryptoAPI/CryptoAPI.csproj", "CryptoAPI/"]
+RUN dotnet restore "CryptoAPI/CryptoAPI.csproj"
+COPY . .
+WORKDIR "/src/CryptoAPI"
+RUN dotnet build "CryptoAPI.csproj" -c Release -o /app/build
 
-COPY *.csproj ./
-RUN dotnet restore
+FROM build AS publish
+RUN dotnet publish "CryptoAPI.csproj" -c Release -o /app/publish
 
-
-COPY . ./
-RUN dotnet publish -c Release -o out
-
-
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
+FROM base AS final
 WORKDIR /app
-COPY --from=build-env /app/out .
+COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "CryptoAPI.dll"]
