@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoAPI", "CryptoAPI\Cryp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntegrationTests", "IntegrationTests\IntegrationTests.csproj", "{77B0D7F3-A6F4-461B-BE12-10992AF7DD24}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{59F9785B-2440-49EB-8E4F-11BA8CC3E62C}"
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{943429CA-78D7-4F99-9B74-6CA4C9B69065}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{77B0D7F3-A6F4-461B-BE12-10992AF7DD24}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{77B0D7F3-A6F4-461B-BE12-10992AF7DD24}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{77B0D7F3-A6F4-461B-BE12-10992AF7DD24}.Release|Any CPU.Build.0 = Release|Any CPU
-		{59F9785B-2440-49EB-8E4F-11BA8CC3E62C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{59F9785B-2440-49EB-8E4F-11BA8CC3E62C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{59F9785B-2440-49EB-8E4F-11BA8CC3E62C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{59F9785B-2440-49EB-8E4F-11BA8CC3E62C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{943429CA-78D7-4F99-9B74-6CA4C9B69065}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{943429CA-78D7-4F99-9B74-6CA4C9B69065}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{943429CA-78D7-4F99-9B74-6CA4C9B69065}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{943429CA-78D7-4F99-9B74-6CA4C9B69065}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
