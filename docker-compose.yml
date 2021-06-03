@@ -13,5 +13,3 @@ services:
     build:
       context: .
       dockerfile: CryptoAPI/Dockerfile
-    ports:
-      - "8080:80"
