@@ -30,17 +30,19 @@ jobs:
     needs: Code-Check
     runs-on: ubuntu-latest
     steps: 
-      - 
-        uses: actions/checkout@v2
-      - 
-        name: Start dependencies (docker-compose)
+      
+      - uses: actions/checkout@v2
+        
+      - name: Start dependencies (docker-compose)
         run: |
                     docker-compose up -d  
+  
       - name: Wait for SQL Server container
         uses: jakejarvis/wait-action@master
         with:
           time: '5s'
-        name: "Setup .NET"
+          
+      - name: "Setup .NET"
         uses: actions/setup-dotnet@v1
         with: 
           dotnet-version: 3.1.x
