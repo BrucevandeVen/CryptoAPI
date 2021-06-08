@@ -9,7 +9,9 @@ services:
     ports:
       - "1433:1433"
   cryptoapi:
-    image: ${DOCKER_REGISTRY-}cryptoapi
+    #image: ${DOCKER_REGISTRY-}cryptoapi
     build:
       context: .
       dockerfile: CryptoAPI/Dockerfile
+    ports:
+      - "7070:80"
