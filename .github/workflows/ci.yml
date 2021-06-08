@@ -11,19 +11,19 @@ jobs:
   Code-Check: 
     runs-on: ubuntu-latest
     steps: 
-      - 
-        name: "Checkout Repository"
+      
+      - name: "Checkout Repository"
         uses: actions/checkout@v2
-      - 
-        name: "Initialize CodeQL"
+      
+      - name: "Initialize CodeQL"
         uses: github/codeql-action/init@v1
         with: 
           languages: csharp
-      - 
-        name: Autobuild
+      
+      - name: Autobuild
         uses: github/codeql-action/autobuild@v1
-      - 
-        name: "Perform CodeQL Analysis"
+      
+      - name: "Perform CodeQL Analysis"
         uses: github/codeql-action/analyze@v1
 
   Build: 
@@ -46,12 +46,12 @@ jobs:
         uses: actions/setup-dotnet@v1
         with: 
           dotnet-version: 3.1.x
-      - 
-        name: "Restore dependencies"
+      
+      - name: "Restore dependencies"
         run: "dotnet restore ${{ env.SOLUTION_PATH }}"
-      - 
-        name: Build
+      
+      - name: Build
         run: "dotnet build --no-restore ${{ env.SOLUTION_PATH }}" 
-      - 
-        name: Test
+     
+      - name: Test
         run: "dotnet test --no-build --verbosity normal ${{ env.SOLUTION_PATH }}"
