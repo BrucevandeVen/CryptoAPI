@@ -22,8 +22,14 @@ namespace CryptoAPI.Models
         public static void SeedData(CryptoMonitorContext context)
         {
             Console.WriteLine("Applying Migrations...");
-
-            context.Database.Migrate();
+            try
+            {
+                context.Database.Migrate();
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Migrations failed");
+            }
 
             if(!context.Crypto.Any())
             {

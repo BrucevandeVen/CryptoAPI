@@ -23,7 +23,9 @@ namespace CryptoAPI
                 {
                     webBuilder.UseStartup<Startup>();
                 })
-                .ConfigureServices(services => 
-                    services.AddHostedService<CryptoUpdater>());
+                .ConfigureServices(services =>
+                {
+                    services.AddHostedService<CryptoUpdater>();
+                });    
     }
 }
