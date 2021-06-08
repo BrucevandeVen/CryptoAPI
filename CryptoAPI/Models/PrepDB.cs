@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace CryptoAPI.Models
@@ -30,6 +31,8 @@ namespace CryptoAPI.Models
             {
                 Console.WriteLine("Migrations failed");
             }
+
+            Thread.Sleep(5000);
 
             if(!context.Crypto.Any())
             {
