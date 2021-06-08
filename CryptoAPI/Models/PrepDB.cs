@@ -32,26 +32,31 @@ namespace CryptoAPI.Models
                 Console.WriteLine("Migrations failed");
             }
 
-            Thread.Sleep(5000);
-
-            if(!context.Crypto.Any())
+            try
             {
-                context.Crypto.AddRange(
-                    new Crypto() { Name="Bitcoin", Price=2000},
-                    new Crypto() { Name = "Ethereum", Price = 2000 },
-                    new Crypto() { Name = "Cardano", Price = 2000 },
-                    new Crypto() { Name = "Dogecoin", Price = 2000 },
-                    new Crypto() { Name = "Polkadot", Price = 2000 },
-                    new Crypto() { Name = "Internet Computer", Price = 2000 },
-                    new Crypto() { Name = "Tether", Price = 2000 },
-                    new Crypto() { Name = "Icon", Price = 2000 },
-                    new Crypto() { Name = "Holo", Price = 2000 },
-                    new Crypto() { Name = "Bitcoin Cash", Price = 2000 }
-                );
-                context.SaveChanges();
+                if (!context.Crypto.Any())
+                {
+                    context.Crypto.AddRange(
+                        new Crypto() { Name = "Bitcoin", Price = 2000 },
+                        new Crypto() { Name = "Ethereum", Price = 2000 },
+                        new Crypto() { Name = "Cardano", Price = 2000 },
+                        new Crypto() { Name = "Dogecoin", Price = 2000 },
+                        new Crypto() { Name = "Polkadot", Price = 2000 },
+                        new Crypto() { Name = "Internet Computer", Price = 2000 },
+                        new Crypto() { Name = "Tether", Price = 2000 },
+                        new Crypto() { Name = "Icon", Price = 2000 },
+                        new Crypto() { Name = "Holo", Price = 2000 },
+                        new Crypto() { Name = "Bitcoin Cash", Price = 2000 }
+                    );
+                    context.SaveChanges();
+                }
+                {
+                    Console.WriteLine("Not seeding, Data already apperend");
+                }
             }
+            catch 
             {
-                Console.WriteLine("Not seeding, Data already apperend");
+                Console.WriteLine("seeding failed");
             }
         }
     }

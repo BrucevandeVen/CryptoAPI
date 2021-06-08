@@ -8,16 +8,8 @@ services:
       SA_PASSWORD: "Brucekeeper13"
     ports:
       - "1433:1433"
-    networks:
-      - "backend"
   cryptoapi:
     image: ${DOCKER_REGISTRY-}cryptoapi
     build:
       context: .
       dockerfile: CryptoAPI/Dockerfile
-    networks:
-      - "backend"
-
-networks:
-  backend:
-    driver: bridge
