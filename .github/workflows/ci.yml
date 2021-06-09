@@ -58,7 +58,7 @@ jobs:
           docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
       - name: Docker Build CD
         run: |
-          docker build ./CryptoAPI -t CryptoAPI
+          docker build ./CryptoAPI -t cryptoapi
       - name: Docker Push
         run: |
-          docker push CryptoAPI
+          docker push cryptoapi
