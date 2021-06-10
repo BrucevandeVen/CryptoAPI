@@ -7,11 +7,11 @@ on:
 
 env: 
   SOLUTION_PATH: ./CryptoAPI.sln
+
 jobs: 
   Code-Check: 
     runs-on: ubuntu-latest
     steps: 
-      
       - name: "Checkout Repository"
         uses: actions/checkout@v2
       
@@ -26,11 +26,11 @@ jobs:
       - name: "Perform CodeQL Analysis"
         uses: github/codeql-action/analyze@v1
 
-  Build: 
+  Build & Testing: 
     runs-on: ubuntu-latest
     needs: Code-Check
     steps: 
-      
+      - name: Checkout Repository
       - uses: actions/checkout@v2
         
       - name: "Setup .NET"
@@ -47,18 +47,20 @@ jobs:
       - name: Test
         run: "dotnet test --no-build --verbosity normal ${{ env.SOLUTION_PATH }}"
    
-  CD:
+  CD Docker:
     runs-on: ubuntu-latest
-    needs: Build
+    needs: Build & Testing
     steps:
       - name: Login to Docker Hub
         uses: docker/login-action@v1
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          
       - name: Docker Build CD
         run: |
           docker build ./CryptoAPI -t cryptoapi
+          
       - name: Docker Push
         run: |
           docker push cryptoapi
