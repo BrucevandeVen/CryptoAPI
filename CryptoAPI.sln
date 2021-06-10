@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.31019.35
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoAPI", "CryptoAPI\CryptoAPI.csproj", "{26AE9169-F002-476C-A72E-A509C1ECEEE5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntegrationTests", "IntegrationTests\IntegrationTests.csproj", "{77B0D7F3-A6F4-461B-BE12-10992AF7DD24}"
-EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{943429CA-78D7-4F99-9B74-6CA4C9B69065}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests", "..\IntegrationTests\IntegrationTests.csproj", "{210CFC62-1EA9-4B6D-BC6A-9615036E0FC4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +19,14 @@ Global
 		{26AE9169-F002-476C-A72E-A509C1ECEEE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26AE9169-F002-476C-A72E-A509C1ECEEE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26AE9169-F002-476C-A72E-A509C1ECEEE5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{77B0D7F3-A6F4-461B-BE12-10992AF7DD24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{77B0D7F3-A6F4-461B-BE12-10992AF7DD24}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{77B0D7F3-A6F4-461B-BE12-10992AF7DD24}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{77B0D7F3-A6F4-461B-BE12-10992AF7DD24}.Release|Any CPU.Build.0 = Release|Any CPU
 		{943429CA-78D7-4F99-9B74-6CA4C9B69065}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{943429CA-78D7-4F99-9B74-6CA4C9B69065}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{943429CA-78D7-4F99-9B74-6CA4C9B69065}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{943429CA-78D7-4F99-9B74-6CA4C9B69065}.Release|Any CPU.Build.0 = Release|Any CPU
+		{210CFC62-1EA9-4B6D-BC6A-9615036E0FC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{210CFC62-1EA9-4B6D-BC6A-9615036E0FC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{210CFC62-1EA9-4B6D-BC6A-9615036E0FC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{210CFC62-1EA9-4B6D-BC6A-9615036E0FC4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

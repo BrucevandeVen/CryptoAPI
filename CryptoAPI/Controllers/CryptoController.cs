@@ -14,12 +14,10 @@ namespace CryptoAPI.Controllers
     public class CryptoController : Controller
     {
         private readonly IDataAccess _dataAccess;
-        private readonly ICryptoDataUpdater _cryptoUpdater;
 
-        public CryptoController(IDataAccess dataAccess, ICryptoDataUpdater cryptoUpdater)
+        public CryptoController(IDataAccess dataAccess)
         {
             _dataAccess = dataAccess;
-            _cryptoUpdater = cryptoUpdater;
         }
 
         [HttpGet]
@@ -47,19 +45,19 @@ namespace CryptoAPI.Controllers
             return Ok(cryptoDTO);
         }
 
-        [HttpGet("update")]
-        public ActionResult Update()
-        {
-            try
-            {
-                _cryptoUpdater.Update();
-            }
-            catch
-            {
-                return NotFound(new { Message = "Update Failed" });
-            }
+        //[HttpGet("update")]
+        //public ActionResult Update()
+        //{
+        //    try
+        //    {
+        //        _cryptoUpdater.Update();
+        //    }
+        //    catch
+        //    {
+        //        return NotFound(new { Message = "Update Failed" });
+        //    }
 
-            return Ok(new { Message = "Updated succesfully"});
-        }
+        //    return Ok(new { Message = "Updated succesfully"});
+        //}
     }
 }
