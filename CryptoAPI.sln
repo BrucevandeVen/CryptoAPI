@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoAPI", "CryptoAPI\CryptoAPI.csproj", "{26AE9169-F002-476C-A72E-A509C1ECEEE5}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{943429CA-78D7-4F99-9B74-6CA4C9B69065}"
+	ProjectSection(ProjectDependencies) = postProject
+		{32B94FF0-9CF0-4B81-90F8-FE4960D542DB} = {32B94FF0-9CF0-4B81-90F8-FE4960D542DB}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTestsEnd", "..\IntegrationTestsEnd\IntegrationTestsEnd.csproj", "{32B94FF0-9CF0-4B81-90F8-FE4960D542DB}"
 EndProject
