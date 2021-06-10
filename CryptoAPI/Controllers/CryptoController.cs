@@ -35,8 +35,6 @@ namespace CryptoAPI.Controllers
         {
             Crypto crypto = await _dataAccess.GetById(id);
 
-            // jajajaj
-
             if (crypto == null)
             {
                 return NotFound(new { Message = "Cryptocurrency has not been found" });
