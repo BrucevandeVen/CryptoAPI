@@ -26,7 +26,7 @@ jobs:
       - name: "Perform CodeQL Analysis"
         uses: github/codeql-action/analyze@v1
 
-  Build & Testing: 
+  Build-Testing: 
     runs-on: ubuntu-latest
     needs: Code-Check
     steps: 
@@ -46,7 +46,7 @@ jobs:
       - name: Test
         run: "dotnet test --no-build --verbosity normal ${{ env.SOLUTION_PATH }}"
    
-  CD Docker:
+  CD-Docker:
     runs-on: ubuntu-latest
     needs: Build & Testing
     steps:
