@@ -1,4 +1,4 @@
-name: .NET_API_CI
+name: .NET_API_CI_CD
 
 on:
   push: 
@@ -58,7 +58,7 @@ jobs:
           
       - name: Docker Build CD
         run: |
-          docker build ./CryptoAPI -t cryptoapi
+          docker build ${{ env.SOLUTION_PATH }}" -t cryptoapi
           
       - name: Docker Push
         run: |
