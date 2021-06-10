@@ -58,7 +58,7 @@ jobs:
           
       - name: Docker Build CD
         run: |
-          docker build ./CryptoAPI -t cryptoapi
+          docker build ./CryptoAPI/Dockerfile -t cryptoapi
           
       - name: Docker Push
         run: |
