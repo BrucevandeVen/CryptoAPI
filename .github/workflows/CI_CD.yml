@@ -58,7 +58,7 @@ jobs:
           
       - name: Docker Build CD
         run: |
-          docker build ${{ env.SOLUTION_PATH }}" -t cryptoapi
+          docker build ${{ env.SOLUTION_PATH }} -t cryptoapi
           
       - name: Docker Push
         run: |
