@@ -58,8 +58,8 @@ jobs:
           
       - name: Docker Build CD
         run: |
-          docker build ./CryptoAPI -t cryptoapi
-          
+          docker build ./CryptoAPI -t dutchones/cryptoapi:v1
+        
       - name: Docker Push
         run: |
-          docker push cryptoapi
+          docker push dutchones/cryptoapi:v1
