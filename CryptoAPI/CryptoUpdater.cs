@@ -47,7 +47,7 @@ namespace CryptoAPI
             try
             {
                 _cryptoUpdater.Update();
-                Console.WriteLine("Updated successfully");
+                Console.WriteLine("Updated successfully", DateTime.UtcNow);
             }
             catch
             {

@@ -8,7 +8,7 @@ namespace CryptoAPI
 {
     public interface IDataAccess
     {
-        Task <IEnumerable<Crypto>> GetAll();
-        Task <Crypto> GetById(int id);
+        Task <List<Crypto>> GetAllCryptoAsync();
+        Task <Crypto> GetCryptoByIdAsync(int id);
     }
 }

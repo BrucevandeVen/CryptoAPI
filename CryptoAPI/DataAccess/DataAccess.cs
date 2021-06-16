@@ -12,7 +12,7 @@ namespace CryptoAPI
 {
     public class DataAccess : IDataAccess
     {
-        public async Task<IEnumerable<Crypto>> GetAll()
+        public async Task<List<Crypto>> GetAllCryptoAsync()
         {
             using (var context = new CryptoMonitorContext())
             {
@@ -20,7 +20,7 @@ namespace CryptoAPI
             }
         }
 
-        public async Task<Crypto> GetById(int id)
+        public async Task<Crypto> GetCryptoByIdAsync(int id)
         {
             using (var context = new CryptoMonitorContext())
             {

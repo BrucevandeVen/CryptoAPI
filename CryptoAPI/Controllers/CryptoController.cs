@@ -21,19 +21,19 @@ namespace CryptoAPI.Controllers
         }
 
         [HttpGet]
-        public async Task <IEnumerable<CryptoDTO>> Get()
+        public async Task <ActionResult<List<CryptoDTO>>> Get()
         {
-            IEnumerable<Crypto> cryptos = await _dataAccess.GetAll();
+            List<Crypto> cryptos = await _dataAccess.GetAllCryptoAsync();
 
-            IEnumerable<CryptoDTO> cryptoDTOs = cryptos.ToList().Select(crypto => crypto.ToDTO());
+            List<CryptoDTO> cryptoDTOs = cryptos.Select(crypto => crypto.ToDTO()).ToList();
    
-            return cryptoDTOs;
+            return Ok(cryptoDTOs);
         }
 
         [HttpGet("{id}")]
         public async Task <ActionResult<CryptoDTO>> Details(int id)
         {
-            Crypto crypto = await _dataAccess.GetById(id);
+            Crypto crypto = await _dataAccess.GetCryptoByIdAsync(id);
 
             if (crypto == null)
             {
