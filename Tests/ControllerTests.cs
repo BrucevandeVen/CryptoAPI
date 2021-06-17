@@ -22,12 +22,12 @@ namespace Tests
 
             var fakeCryptos = A.CollectionOfDummy<Crypto>(fakeCryptoCount).ToList();
 
-            var fakeRepository = A.Fake<IDataAccess>();
-            var controller = new CryptoController(fakeRepository);
+            var fakeDataAccess = A.Fake<IDataAccess>();
+            var controller = new CryptoController(fakeDataAccess);
 
-            var apicall = fakeRepository.GetAllCryptoAsync();
+            var apiCall = fakeDataAccess.GetAllCryptoAsync();
 
-            A.CallTo(() => fakeRepository.GetAllCryptoAsync())
+            A.CallTo(() => apiCall)
                 .Returns(Task.FromResult(fakeCryptos)); 
 
             var actionResult = (await controller.Get()).Result as OkObjectResult;
@@ -41,23 +41,20 @@ namespace Tests
         }
 
         [Fact]
-        public async Task Test_GetAllCryptosAsync()
+        public async Task WhenCalling_Get_WithoutData_ReturnsNotFound()
         {
-            //Arrange
-            var request = "crypto";
+            var fakeDataAccess = A.Fake<IDataAccess>();
+            var controller = new CryptoController(fakeDataAccess);
 
-            //Act
-            var response = await TestClient.GetAsync(request);
+            var actionResult = (await controller.Get()).Result as NotFoundResult;
 
-            //Assert
-            var content = await response.Content.ReadAsStringAsync();
-            Assert.Contains("id", content);
-            Assert.Contains("name", content);
-            Assert.Contains("price", content);
+            Assert.NotNull(actionResult);
+            Assert.IsType<NotFoundResult>(actionResult);
+            Assert.Equal(StatusCodes.Status404NotFound, actionResult.StatusCode);
         }
 
         [Fact]
-        public async Task Test_GetCryptoById_Name()
+        public async Task Test_GetCryptoById_Name() // geen integration test!
         {
             for (int i = 1; i < 11; i++)
             {
@@ -71,20 +68,6 @@ namespace Tests
                 var content = await response.Content.ReadAsStringAsync();
                 Assert.Contains("name", content);
             }
-        }
-
-        [Fact]
-        public async Task someting()
-        {
-            //Arrange
-            var request = "crypto/1";
-
-            //Act
-            var response = await TestClient.GetAsync(request);
-
-            //Assert
-            var content = await response.Content.ReadAsStringAsync();
-            Assert.Contains("Bitcoin", content);
         }
     }
 }

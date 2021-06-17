@@ -26,6 +26,11 @@ namespace CryptoAPI.Controllers
             List<Crypto> cryptos = await _dataAccess.GetAllCryptoAsync();
 
             List<CryptoDTO> cryptoDTOs = cryptos.Select(crypto => crypto.ToDTO()).ToList();
+
+            if (cryptos == null || cryptos.Count < 1)
+            {
+                return NotFound();
+            }
    
             return Ok(cryptoDTOs);
         }
